@@ -1,0 +1,30 @@
+---
+import { options } from '../../data/landing.fr';
+---
+
+<section id="options" class="py-16 md:py-24 bg-[var(--surface-2)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-14 reveal">
+      <span class="pill inline-flex mb-4">Sur-mesure</span>
+      <h2 class="text-3xl md:text-4xl font-semibold font-sans tracking-tight mb-4">
+        {options.sectionTitle}
+      </h2>
+      <p class="text-base md:text-lg text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
+        {options.sectionSubtitle}
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {options.items.map((opt, i) => (
+        <div class={`bento-card p-8 reveal reveal-delay-${i + 1}`}>
+          <div class="flex items-center gap-3 mb-4">
+            <span class="inline-flex w-10 h-10 items-center justify-center rounded-xl bg-[var(--surface-2)] text-xl" aria-hidden="true">{opt.icon}</span>
+            <h3 class="text-lg font-semibold font-sans">{opt.name}</h3>
+          </div>
+          <div class="text-2xl font-bold font-sans text-[var(--brand)] mb-4">{opt.price}</div>
+          <p class="text-sm text-[var(--text-muted)] leading-relaxed">{opt.benefit}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

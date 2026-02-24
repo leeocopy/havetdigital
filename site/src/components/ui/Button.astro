@@ -1,0 +1,17 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary';
+  href?: string;
+  class?: string;
+  id?: string;
+  type?: 'button' | 'submit' | 'reset';
+  target?: string;
+  rel?: string;
+}
+const { variant = 'primary', href, class: className = '', type, ...rest } = Astro.props;
+const btnClass = variant === 'primary' ? 'btn-primary' : 'btn-secondary';
+const Tag = href ? 'a' : 'button';
+---
+<Tag href={href} class={`${btnClass} ${className}`} type={!href ? (type || 'button') : undefined} {...rest}>
+  <slot />
+</Tag>

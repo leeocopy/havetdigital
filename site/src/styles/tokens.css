@@ -1,0 +1,41 @@
+:root {
+    color-scheme: light;
+
+    /* Surfaces */
+    --bg: #ffffff;
+    --bg-muted: #f7f7f9;
+    --surface: #ffffff;
+    --surface-2: #fbfbfd;
+
+    /* Text */
+    --text: #0b0d12;
+    --text-muted: #525866;
+
+    /* Borders / shadows */
+    --border: rgba(15, 23, 42, 0.10);
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 10px 30px rgba(15, 23, 42, 0.10);
+
+    /* Radii (match Salix-like UI) */
+    --r-lg: 20px;
+    --r-md: 14px;
+    --r-sm: 12px;
+    --r-pill: 999px;
+
+    /* HavetDigital brand */
+    --brand: #5c48b1;
+    /* purple primary */
+    --brand-2: #52afda;
+    /* cyan accent */
+    --brand-3: #4874cb;
+    /* blue accent */
+    --brand-deep: #534289;
+    /* footer / deep sections */
+    --brand-soft: rgba(92, 72, 177, 0.12);
+
+    --grad-brand: linear-gradient(90deg, var(--brand-2) 0%, var(--brand) 100%);
+
+    /* Typography */
+    --font-sans: Poppins, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+        "Noto Sans", "Helvetica Neue", sans-serif;
+}

@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/sections/Header.astro';
+import Hero from '../components/sections/Hero.astro';
+import Problem from '../components/sections/Problem.astro';
+import Solution from '../components/sections/Solution.astro';
+import Options from '../components/sections/Options.astro';
+import WhyUs from '../components/sections/WhyUs.astro';
+import CTA from '../components/sections/CTA.astro';
+import Footer from '../components/sections/Footer.astro';
+
+import PricingSwitcher from '../components-vue/PricingSwitcher.vue';
+import FaqAccordion from '../components-vue/FaqAccordion.vue';
+import ContactForm from '../components-vue/ContactForm.vue';
+---
+
+<BaseLayout title="HavetDigital × IAWeb — Votre présence en ligne, enfin rentable">
+  <Header />
+  <main>
+    <Hero />
+    <Problem />
+    <Solution />
+
+    <!-- Vue interactive: Pricing toggle (hydrate when visible) -->
+    <PricingSwitcher client:visible />
+
+    <Options />
+    <WhyUs />
+    <CTA />
+
+    <!-- Vue interactive: FAQ accordion (hydrate when visible) -->
+    <FaqAccordion client:visible />
+
+    <!-- Vue interactive: Contact form (hydrate when idle) -->
+    <ContactForm client:idle />
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,53 @@
+---
+import { audit } from '../../data/landing.fr';
+import Button from '../ui/Button.astro';
+---
+
+<section id="audit" class="py-16 md:py-24 relative bg-[var(--surface-2)]">
+  <!-- Gradient glow light -->
+  <div
+    class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20"
+    aria-hidden="true"
+  >
+    <div
+      class="w-[800px] h-[400px] rounded-full"
+      style="background: radial-gradient(ellipse at center, var(--brand-soft) 0%, transparent 60%);"
+    ></div>
+  </div>
+
+  <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
+    <div class="bento-card p-10 md:p-14 reveal ring-1 ring-[var(--brand-soft)] shadow-[var(--shadow-md)]">
+      <span class="pill inline-flex mb-6">🎁 Gratuit</span>
+      <h2 class="text-3xl md:text-4xl font-semibold font-sans tracking-tight mb-4">
+        {audit.title}
+      </h2>
+      <p class="text-[var(--text-muted)] mb-3 leading-relaxed max-w-xl mx-auto">
+        {audit.paragraph}
+      </p>
+      <p class="text-sm text-[var(--text-muted)] mb-8 italic">
+        {audit.subtext}
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+        <Button
+          href={audit.ctaHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto"
+        >
+          {audit.ctaText}
+          <svg class="w-5 h-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </Button>
+      </div>
+
+      <p class="text-sm text-[var(--text-muted)]">
+        Ou contactez-nous directement :
+        <a href={`mailto:${audit.email}`} class="text-[var(--brand)] font-medium underline hover:no-underline">
+          {audit.email}
+        </a>
+      </p>
+    </div>
+  </div>
+</section>

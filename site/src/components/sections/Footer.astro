@@ -1,0 +1,12 @@
+---
+import { footer } from '../../data/landing.fr';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-[color:var(--border)] py-10">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+    <p class="text-sm text-[var(--text-muted)]">
+      © {year} {footer.copyright}
+    </p>
+  </div>
+</footer>

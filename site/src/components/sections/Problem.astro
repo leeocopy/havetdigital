@@ -1,0 +1,57 @@
+---
+import { problem } from '../../data/landing.fr';
+---
+
+<section id="probleme" class="py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <!-- Section intro -->
+    <div class="text-center mb-14 reveal">
+      <span class="pill mb-4 inline-flex">Le constat</span>
+      <h2 class="text-3xl md:text-4xl font-semibold font-sans tracking-tight mb-4">
+        Vous êtes visible, mais pas <span class="text-[var(--brand)]">trouvable</span>
+      </h2>
+      <p class="text-base md:text-lg text-[var(--text-muted)] max-w-3xl mx-auto leading-relaxed">
+        {problem.paragraph}
+      </p>
+    </div>
+
+    <!-- Two-column bento -->
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Pains -->
+      <div class="bento-card p-8 reveal reveal-delay-1">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center text-lg">❌</span>
+          <h3 class="text-lg font-semibold font-sans">{problem.painsTitle}</h3>
+        </div>
+        <ul class="space-y-4">
+          {problem.pains.map((p) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-red-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span class="text-[var(--text-muted)] leading-relaxed">{p}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Gains -->
+      <div class="bento-card p-8 reveal reveal-delay-2 ring-1 ring-[var(--brand-soft)] shadow-[var(--shadow-md)]">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center text-lg">✅</span>
+          <h3 class="text-lg font-semibold font-sans">{problem.gainsTitle}</h3>
+        </div>
+        <ul class="space-y-4">
+          {problem.gains.map((g) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-green-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-[var(--text)] font-medium leading-relaxed">{g}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
