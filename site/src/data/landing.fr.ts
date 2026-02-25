@@ -241,5 +241,5 @@ export const contact = {
 };
 
 export const footer = {
-    copyright: 'HavetDigital × IAWeb — Programme One-Page Vitrine — Tous droits réservés',
+    copyright: 'HavetDigital — Programme One-Page Vitrine — Tous droits réservés',
 };
