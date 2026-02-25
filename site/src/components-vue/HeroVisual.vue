@@ -226,7 +226,7 @@ const parallaxStyle = computed(() => {
 /* Paper Layer Panels */
 .paper-layer {
   position: absolute;
-  border: 1px solid rgba(92, 72, 177, 0.08); /* Kept as requested in screenshot */
+ /* border: 1px solid rgba(92, 72, 177, 0.08);  Kept as requested in screenshot */
   /* Added width and height fallback to 100% to ensure rings do not collapse without parent size, 
      but strictly removing them from standard properties class as asked by the visual override */
 }
