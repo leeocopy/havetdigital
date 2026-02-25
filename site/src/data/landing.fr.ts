@@ -167,6 +167,7 @@ export const options = {
             price: '349\u00A0€',
             benefit:
                 'Textes professionnels rédigés pour vous\u00A0: accroche, services, confiance, appel à l\'action. Vos mots, en mieux.',
+            media: '/options/copywriting.svg',
         },
         {
             icon: '📅',
@@ -174,6 +175,7 @@ export const options = {
             price: '189\u00A0€',
             benefit:
                 'Formulaire intelligent de prise de rendez-vous ou demande de devis, intégré à votre agenda ou email.',
+            media: '/options/rdv.svg',
         },
         {
             icon: '⚙️',
@@ -181,34 +183,9 @@ export const options = {
             price: '399\u00A0€',
             benefit:
                 'Réponse automatique par email/SMS à chaque demande de contact. Relances, confirmations, notifications. Zéro effort.',
+            media: '/options/automation.svg',
         },
     ],
-};
-
-export const whyUs = {
-    sectionTitle: 'Pourquoi HavetDigital × IAWeb\u00A0?',
-    france: {
-        flag: '🇫🇷',
-        name: 'HavetDigital — France',
-        bullets: [
-            'Stratégie digitale & acquisition client',
-            'Branding & positionnement local',
-            'Interlocuteur francophone unique',
-            'Connaissance terrain des TPE & artisans',
-        ],
-    },
-    morocco: {
-        flag: '🇲🇦',
-        name: 'IAWeb — Maroc',
-        bullets: [
-            'Développement web & technique',
-            'Automatisation & intégrations',
-            'Réactivité & qualité d\'exécution',
-            'Infrastructure fiable et évolutive',
-        ],
-    },
-    conclusion:
-        'Deux expertises complémentaires. Un seul interlocuteur côté France. Une promesse commune\u00A0: des sites qui convertissent, livrés sans friction.',
 };
 
 export const audit = {

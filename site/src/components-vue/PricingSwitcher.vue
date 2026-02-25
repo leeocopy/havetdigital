@@ -15,29 +15,37 @@
         <div
           class="inline-flex bg-[var(--surface-2)] rounded-[var(--r-lg)] p-1 border border-[color:var(--border)]"
           role="tablist"
-           aria-label="Type de tarification"
+          aria-label="Type de tarification"
         >
           <button
+            ref="btnUnique"
             type="button"
             role="tab"
             :aria-selected="activeTab === 'unique'"
+            :tabindex="activeTab === 'unique' ? 0 : -1"
             class="relative px-5 py-2.5 text-sm font-medium rounded-xl transition-all duration-300"
             :class="activeTab === 'unique'
               ? 'bg-white text-[var(--brand)] shadow-[var(--shadow-sm)]'
               : 'text-[var(--text-muted)] hover:text-[var(--text)]'"
-            @click="activeTab = 'unique'"
+            @click="setTab('unique')"
+            @keydown.right.prevent="focusTab('abo')"
+            @keydown.left.prevent="focusTab('abo')"
           >
             Paiement unique
           </button>
           <button
+            ref="btnAbo"
             type="button"
             role="tab"
             :aria-selected="activeTab === 'abo'"
+            :tabindex="activeTab === 'abo' ? 0 : -1"
             class="relative px-5 py-2.5 text-sm font-medium rounded-xl transition-all duration-300"
             :class="activeTab === 'abo'
               ? 'bg-white text-[var(--brand)] shadow-[var(--shadow-sm)]'
               : 'text-[var(--text-muted)] hover:text-[var(--text)]'"
-            @click="activeTab = 'abo'"
+            @click="setTab('abo')"
+            @keydown.right.prevent="focusTab('unique')"
+            @keydown.left.prevent="focusTab('unique')"
           >
             Abonnement
           </button>
@@ -127,10 +135,25 @@ const oneTime = pricingOneTime;
 const sub = pricingSub;
 
 const activeTab = ref<'unique' | 'abo'>('unique');
+const btnUnique = ref<HTMLElement | null>(null);
+const btnAbo = ref<HTMLElement | null>(null);
 
 const activePlans = computed(() =>
   activeTab.value === 'unique' ? oneTime.plans : sub.plans
 );
+
+function setTab(tab: 'unique' | 'abo') {
+  activeTab.value = tab;
+}
+
+function focusTab(tab: 'unique' | 'abo') {
+  activeTab.value = tab;
+  if (tab === 'unique' && btnUnique.value) {
+    btnUnique.value.focus();
+  } else if (tab === 'abo' && btnAbo.value) {
+    btnAbo.value.focus();
+  }
+}
 </script>
 
 <style scoped>

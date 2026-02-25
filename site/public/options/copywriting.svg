@@ -1,0 +1,20 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Window Mockup -->
+  <rect x="40" y="40" width="520" height="320" rx="12" fill="white" stroke="rgba(15,23,42,0.1)"/>
+  <!-- Header Bar -->
+  <rect x="40" y="40" width="520" height="48" rx="12" fill="#FFFFFF"/>
+  <rect x="40" y="88" width="520" height="1" fill="rgba(15,23,42,0.05)"/>
+  <circle cx="64" cy="64" r="6" fill="#E2E8F0"/>
+  <circle cx="84" cy="64" r="6" fill="#E2E8F0"/>
+  <circle cx="104" cy="64" r="6" fill="#E2E8F0"/>
+  <!-- Content Title -->
+  <rect x="72" y="120" width="240" height="24" rx="4" fill="#0B0D12"/>
+  <rect x="72" y="156" width="360" height="12" rx="4" fill="#52AFDA" opacity="0.4"/>
+  <!-- Content Body -->
+  <rect x="72" y="190" width="456" height="8" rx="4" fill="#E2E8F0"/>
+  <rect x="72" y="210" width="420" height="8" rx="4" fill="#E2E8F0"/>
+  <rect x="72" y="230" width="440" height="8" rx="4" fill="#E2E8F0"/>
+  <rect x="72" y="250" width="300" height="8" rx="4" fill="#E2E8F0"/>
+  
+  <rect x="72" y="280" width="120" height="36" rx="6" fill="#5C48B1"/>
+</svg>

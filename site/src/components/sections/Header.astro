@@ -3,43 +3,55 @@ import { brand } from '../../data/landing.fr';
 import Button from '../ui/Button.astro';
 ---
 
-<header
-  id="header"
-  class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-[var(--bg)]/80 border-b border-[color:var(--border)]"
->
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-    <!-- Logo -->
-    <a href="/" class="flex items-center gap-2 group hover:opacity-90 transition-opacity" aria-label="Accueil">
-      <img src="/brand/logo.png" alt="Havet Digital" width="140" height="36" loading="eager" />
-    </a>
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" data-scrolled="false">
+  <!-- Top gradient line -->
+  <div id="header-gradient" class="w-full transition-all duration-300" style="height: 6px; background: var(--grad-brand);"></div>
 
-    <!-- Desktop nav -->
-    <nav class="hidden md:flex items-center gap-8" aria-label="Navigation principale">
-      <a href="#solution" class="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">Solution</a>
-      <a href="#offres" class="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">Offres</a>
-      <a href="#pourquoi" class="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">Pourquoi nous</a>
-      <a href="#faq" class="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">FAQ</a>
-      <Button href="#audit">{brand.primaryCta.label}</Button>
-    </nav>
+  <!-- Nav container (Pill) -->
+  <div class="px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pt-4 pb-2 transition-all duration-300 pill-container">
+    <div class="flex items-center justify-between h-16 bg-[var(--bg)] border border-[color:var(--border)] rounded-full px-6 shadow-sm">
+      <!-- Logo -->
+      <div class="flex-1 flex items-center justify-start">
+        <a href="/" class="flex items-center gap-2 group hover:opacity-90 transition-opacity" aria-label="Accueil">
+          <img src="/brand/logo.png" alt="Havet Digital" width="140" height="36" loading="eager" />
+        </a>
+      </div>
 
-    <!-- Mobile menu toggle -->
-    <button
-      type="button"
-      id="mobile-menu-btn"
-      class="md:hidden p-2 text-[var(--text-muted)] hover:text-[var(--text)]"
-      aria-label="Ouvrir le menu"
-      aria-expanded="false"
-    >
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center justify-center gap-6 lg:gap-8" aria-label="Navigation principale">
+        <a href="#solution" class="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">Solution</a>
+        <a href="#offres" class="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">Offres</a>
+        <a href="#pourquoi" class="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">Pourquoi nous</a>
+        <a href="#faq" class="text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">FAQ</a>
+      </nav>
+
+      <!-- Right side: Login + CTA -->
+      <div class="hidden md:flex flex-1 items-center justify-end gap-4 lg:gap-6">
+        <a href="#login" class="text-sm font-medium whitespace-nowrap text-[var(--text-muted)] hover:text-[var(--text)] transition-colors">Login</a>
+        <Button href="#audit" class="whitespace-nowrap">{brand.primaryCta.label}</Button>
+      </div>
+
+      <!-- Mobile menu toggle -->
+      <div class="md:hidden flex flex-1 items-center justify-end">
+        <button
+          type="button"
+          id="mobile-menu-btn"
+          class="p-2 text-[var(--text-muted)] hover:text-[var(--text)]"
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 
   <!-- Mobile menu -->
   <nav
     id="mobile-menu"
-    class="md:hidden hidden border-t border-[color:var(--border)] bg-[var(--bg)]/95 backdrop-blur-xl"
+    class="md:hidden hidden absolute top-full mt-2 left-4 right-4 rounded-2xl shadow-lg border border-[color:var(--border)] bg-[var(--bg)]/95 backdrop-blur-xl"
     aria-label="Navigation mobile"
   >
     <div class="px-4 py-4 space-y-3">
@@ -47,12 +59,39 @@ import Button from '../ui/Button.astro';
       <a href="#offres" class="block text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors py-2">Offres</a>
       <a href="#pourquoi" class="block text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors py-2">Pourquoi nous</a>
       <a href="#faq" class="block text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors py-2">FAQ</a>
-      <Button href="#audit" class="w-full mt-2">{brand.primaryCta.label}</Button>
+      <div class="border-t border-[color:var(--border)] pt-3 mt-3">
+        <a href="#login" class="block text-sm font-medium text-[var(--text-muted)] hover:text-[var(--text)] transition-colors py-2">Login</a>
+        <Button href="#audit" class="w-full mt-2">{brand.primaryCta.label}</Button>
+      </div>
     </div>
   </nav>
 </header>
 
+<style>
+  header[data-scrolled="true"] #header-gradient {
+    height: 0 !important;
+    opacity: 0;
+    overflow: hidden;
+  }
+  header[data-scrolled="true"] .pill-container {
+    padding-top: 0.5rem; /* Slightly reduce padding on scroll for dynamic feel */
+  }
+</style>
+
 <script>
+  const header = document.getElementById('header');
+  
+  function updateScroll() {
+    if (window.scrollY > 10) {
+      header?.setAttribute('data-scrolled', 'true');
+    } else {
+      header?.setAttribute('data-scrolled', 'false');
+    }
+  }
+
+  window.addEventListener('scroll', updateScroll, { passive: true });
+  updateScroll(); // initial check
+
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   btn?.addEventListener('click', () => {

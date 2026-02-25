@@ -1,66 +1,222 @@
 ---
 import { hero, brand } from '../../data/landing.fr';
 import Button from '../ui/Button.astro';
+import HeroVisual from '../../components-vue/HeroVisual.vue';
 ---
 
-<section id="hero" class="relative pt-28 pb-20 md:pt-40 md:pb-32 overflow-hidden">
-  <!-- Gradient glow light mode -->
-  <div
-    class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] opacity-10 pointer-events-none"
-    aria-hidden="true"
-  >
-    <div
-      class="w-full h-full rounded-full"
-      style="background: radial-gradient(ellipse at center, var(--brand) 0%, transparent 60%);"
-    ></div>
+<section id="hero" class="hero-section relative overflow-hidden">
+
+  <!-- + Grid pattern background -->
+  <div aria-hidden="true" class="hero-grid-bg absolute inset-0 pointer-events-none z-0"></div>
+
+  <!-- Brand radial glow top-right -->
+  <div aria-hidden="true" class="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none z-0"
+    style="background: radial-gradient(ellipse at 80% 20%, rgba(82,175,218,0.12) 0%, transparent 65%);">
+  </div>
+  <div aria-hidden="true" class="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none z-0"
+    style="background: radial-gradient(ellipse at 20% 80%, rgba(92,72,177,0.09) 0%, transparent 65%);">
   </div>
 
-  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-    <!-- Badge -->
-    <div class="reveal">
-      <span class="pill inline-flex mb-6">{hero.badge}</span>
-    </div>
+  <!-- ── Main 2-col grid ── -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="hero-cols">
 
-    <!-- H1 -->
-    <h1
-      class="reveal reveal-delay-1 text-4xl sm:text-5xl md:text-6xl font-semibold font-sans leading-tight tracking-tight mb-6"
-    >
-      {hero.title.split(',')[0]}
-      <span class="text-[var(--brand)]">
-        enfin rentable.
-      </span>
-    </h1>
+      <!-- ══ LEFT: Interactive visual block ══ -->
+      <div class="hero-visual-col" aria-hidden="true">
+        <HeroVisual client:load />
+      </div>
 
-    <!-- Subtitle -->
-    <p
-      class="reveal reveal-delay-2 text-base md:text-lg text-[var(--text-muted)] max-w-2xl mx-auto mb-8 leading-relaxed"
-    >
-      {hero.subtitle}
-    </p>
+      <!-- ══ RIGHT: Copy block ══ -->
+      <div class="hero-copy-col">
 
-    <!-- Trust bullets -->
-    <div class="reveal reveal-delay-3 flex flex-wrap justify-center gap-3 mb-10">
-      {hero.bullets.map((b) => (
-        <span class="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--text-muted)] bg-white px-4 py-2 rounded-full border border-[color:var(--border)]">
-          <svg class="w-4 h-4 text-[var(--brand)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-          {b}
-        </span>
-      ))}
-    </div>
+        <!-- Kicker line -->
+        <p class="hero-kicker fade-up" style="--d:0s">
+          Votre partenaire digital
+        </p>
 
-    <!-- CTAs -->
-    <div class="reveal reveal-delay-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <Button href={brand.primaryCta.href} variant="primary">
-        {brand.primaryCta.label}
-        <svg class="w-5 h-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </Button>
-      <Button href={brand.secondaryCta.href} variant="secondary">
-        {brand.secondaryCta.label}
-      </Button>
+        <!-- Badge pill -->
+        <div class="fade-up" style="--d:0.1s">
+          <span class="pill inline-flex mb-5">{hero.badge}</span>
+        </div>
+
+        <!-- H1 -->
+        <h1 class="hero-headline fade-up" style="--d:0.2s">
+          Votre présence en ligne,<br>
+          <span class="hero-accent">enfin rentable.</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="hero-subtitle fade-up" style="--d:0.35s">
+          {hero.subtitle}
+        </p>
+
+        <!-- Feature pills row -->
+        <div class="hero-bullets fade-up" style="--d:0.5s">
+          {hero.bullets.map((b) => (
+            <span class="feature-pill">
+              <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              {b}
+            </span>
+          ))}
+        </div>
+
+        <!-- CTA buttons -->
+        <div class="hero-ctas fade-up" style="--d:0.65s">
+          <Button href={brand.primaryCta.href} variant="primary">
+            {brand.primaryCta.label}
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Button>
+          <Button href={brand.secondaryCta.href} variant="secondary">
+            {brand.secondaryCta.label}
+          </Button>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+/* ── Section shell ── */
+.hero-section {
+  padding-top: clamp(6rem, 12vw, 10rem);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+/* + grid background */
+.hero-grid-bg {
+  background-image:
+    radial-gradient(circle, rgba(92,72,177,0.18) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.55;
+}
+
+/* ── 2-col layout ── */
+.hero-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-cols {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+  /* On desktop: visual left, copy right */
+  .hero-visual-col { order: 1; }
+  .hero-copy-col   { order: 2; }
+}
+
+/* On mobile: copy first, visual after */
+.hero-visual-col { order: 2; }
+.hero-copy-col   { order: 1; }
+
+.hero-visual-col {
+  position: relative;
+  min-height: 380px;
+}
+
+@media (min-width: 1024px) {
+  .hero-visual-col { min-height: 500px; }
+}
+
+/* ── Copy column ── */
+.hero-kicker {
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--brand-2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+}
+
+.hero-headline {
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  font-family: var(--font-sans);
+  line-height: 1.15;
+  tracking-tight: -0.02em;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+}
+
+.hero-accent {
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+  max-width: 440px;
+}
+
+.hero-bullets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-bottom: 2rem;
+}
+
+.feature-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-muted);
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  padding: 0.375rem 0.875rem;
+}
+.feature-pill svg {
+  color: var(--brand);
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  align-items: center;
+}
+
+/* ── Staggered fade-up animations ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUp 0.55s ease forwards;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Disable all motion if prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .float-tag {
+    animation: none;
+  }
+}
+</style>
