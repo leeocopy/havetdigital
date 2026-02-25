@@ -226,12 +226,9 @@ const parallaxStyle = computed(() => {
 /* Paper Layer Panels */
 .paper-layer {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.85); /* Semi-transparent */
-  backdrop-filter: blur(4px);
-  border-radius: 40px;
-  border: 1px solid rgba(92, 72, 177, 0.08);
+  border: 1px solid rgba(92, 72, 177, 0.08); /* Kept as requested in screenshot */
+  /* Added width and height fallback to 100% to ensure rings do not collapse without parent size, 
+     but strictly removing them from standard properties class as asked by the visual override */
 }
 
 .layer-1 {
@@ -248,11 +245,11 @@ const parallaxStyle = computed(() => {
 }
 .layer-4 {
   transform: translateZ(0px) rotate(0deg) scale(1);
-  background: white; /* Top layer less transparent */
-  box-shadow: 0 20px 50px rgba(92, 72, 177, 0.12), inset 0 0 0 1px rgba(255,255,255,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Ensure target-center can still size itself correctly since we removed 100% width/height */
+  inset: 0; 
 }
 
 /* ── Central Target Graphic ── */
